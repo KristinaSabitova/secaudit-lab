@@ -15,5 +15,5 @@ def user_by_name(name):
 
 
 def search_products(term):
-    query = "SELECT id, name, price FROM products WHERE name LIKE '%" + term + "%'"
-    return connect().execute(query).fetchall()
+    query = "SELECT id, name, price FROM products WHERE name LIKE ?"
+    return connect().execute(query, (f"%{term}%",)).fetchall()
