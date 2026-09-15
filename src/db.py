@@ -17,3 +17,8 @@ def user_by_name(name):
 def search_products(term):
     query = "SELECT id, name, price FROM products WHERE name LIKE ?"
     return connect().execute(query, (f"%{term}%",)).fetchall()
+
+
+def order_for(order_id, user_id):
+    query = f"SELECT id, total, status FROM orders WHERE id = {order_id} AND user_id = ?"
+    return connect().execute(query, (user_id,)).fetchone()
