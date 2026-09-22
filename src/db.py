@@ -22,3 +22,8 @@ def search_products(term):
 def order_for(order_id, user_id):
     query = f"SELECT id, total, status FROM orders WHERE id = {order_id} AND user_id = ?"
     return connect().execute(query, (user_id,)).fetchone()
+
+
+def search_reviews(term):
+    query = f"SELECT id, body FROM reviews WHERE body LIKE '%{term}%'"
+    return connect().execute(query).fetchall()

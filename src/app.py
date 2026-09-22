@@ -57,5 +57,10 @@ def show_order(order_id):
     return jsonify(db.order_for(int(order_id), session["user_id"]))
 
 
+@app.route("/reviews/search")
+def search_reviews():
+    return jsonify(db.search_reviews(request.args.get("q", "")))
+
+
 if __name__ == "__main__":
     raise SystemExit("secaudit lab: this application is not meant to be run")
